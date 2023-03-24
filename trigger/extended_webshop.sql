@@ -2,7 +2,8 @@ DROP TABLE IF EXISTS articles CASCADE;
 DROP TABLE IF EXISTS clients CASCADE;
 DROP TABLE IF EXISTS orders CASCADE;
 DROP TABLE IF EXISTS order_lines CASCADE;
-
+DROP TABLE IF EXISTS accounts CASCADE;
+DROP TABLE IF EXISTS transfers CASCADE;
 
 CREATE TABLE articles (
     id serial PRIMARY KEY,
@@ -66,3 +67,11 @@ insert into order_lines (article_id, order_id,amount) values (2,1,3);
 insert into orders (id, client_id) values (2,2);
 insert into order_lines (article_id, order_id,amount) values (3,2,4);
 insert into order_lines (article_id, order_id,amount) values (4,2,1);
+
+INSERT INTO accounts VALUES(1, 10000, FALSE);
+INSERT INTO accounts VALUES(2, 10000, FALSE);
+
+INSERT INTO transfers VALUES(1, 1, 2, '02-03-2019', 120);
+INSERT INTO transfers VALUES(2, 2, 1, '02-03-2019', 12);
+INSERT INTO transfers VALUES(3, 1, 2, '02-03-2021', 40);
+INSERT INTO transfers VALUES(4, 2, 1, '02-03-2021', 500);
