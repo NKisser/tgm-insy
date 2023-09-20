@@ -1,6 +1,6 @@
-# insy-4bhit
+# tgm-insy
 
-Repository für das Fach "Informationssysteme" (4BHIT).
+Repository für das Fach "Informationssysteme" (alle Jahrgänge).
 
 ## Postgres Container
 

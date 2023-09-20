@@ -1,0 +1,26 @@
+services:
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: symfony
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: symfony
+    volumes:
+      - ./db_wp/data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  wordpress:
+    image: wordpress:latest
+    depends_on:
+      - database
+    ports:
+      - "8080:80"
+    volumes:
+      - ./wp:/var/www/html
+    environment:
+      WORDPRESS_DB_HOST: database:3306
+      WORDPRESS_DB_USER: symfony
+      WORDPRESS_DB_PASSWORD: symfony
+      WORDPRESS_DB_NAME: symfony
