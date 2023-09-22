@@ -1,0 +1,56 @@
+---
+title: |
+  ![](pictures/logo.png){width=1cm}  
+  NoSQL-Datenbanken: InfluxDB
+
+author: 'Andreas Sünder 4BHIT'
+output:
+  beamer_presentation:
+    includes:
+      in_header: "preamble.tex"
+  
+date: "22.11.2022"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## InfluxDB: Einführung
+
+InfluxDB ist eine sog. **Time-Series-Database (TSDB)** und ist ein NoSQL-DBMS, welches von der Firma *InfluxData* entwickelt wurde und darauf spezialisiert ist, mit **Zeitreihendaten** zu arbeiten.
+
+Man verwendet InfluxDB, um etwa Sensordaten o.Ä., welche mit **Zeitstempeln** versehen sind, über einen längeren Zeitraum zu speichern. Da viele solcher Datenquellen einen **ständigen Datenstrom** liefern, müssen die eingehenden Daten nach Eintreffen in der Datenbank sofort verarbeitet werden, wofür InfluxDB ebenfalls gemacht ist.
+
+## InfluxDB: Aufbau und Funktionsweise
+
+\includegraphics[width=8cm, center]{pictures/fig1.png}
+
+## InfluxDB: Timestamps, Fields und Tags
+
+\includegraphics[width=10cm, center]{pictures/fig2.png}
+
+## InfluxDB: Querying mit Flux
+
+```
+from(bucket: 'telemetry')
+  |> range(start: -15m)
+  |> filter(fn: (r) => 
+    r.location == "front"
+  )
+  |> filter(fn: (r) => 
+    r._measurement == 'rpm'
+  )
+  |> aggregateWindow(every: 1m, fn: max)
+  |> to(bucket: 'telemetry-downsample')
+```
+
+## InfluxDB: Anwendung
+
+- Internet of Things
+
+- Monitoring (Performance Monitoring, Sicherheit, ...)
+
+- Real-Time Analytics
+
+

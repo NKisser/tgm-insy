@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+  influxdb:
+    image: influxdb:2.0
+    container_name: insy-influxdb
+    ports:
+      - 8086:8086
+    env_file:
+      - .env
+    entrypoint: ['./entrypoint.sh']
+    volumes:
+      - ${PWD}/influxdb:/var/lib/influxdb
+
+  telegraf:
+    image: telegraf:1.19
+    container_name: insy-telegraf
+    depends_on:
+      - influxdb
+    env_file:
+      - .env
+    volumes:
+      - ${TELEGRAF_CFG_PATH}:/etc/telegraf/telegraf.conf:rw

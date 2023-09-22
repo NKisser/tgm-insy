@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<bookstore>
+<!-- Gute Rezepte -->
+<book category="cooking">
+<title lang="en"> Everyday Italian </title>
+<author> Giada De Laurentiis </author>
+<year>2005</year>
+<price>30.00</price>
+</book>
+
+<!-- Cooking book -->
+<book category="cooking">
+<title lang="en"> Harry Potter </title>
+<author> J K. Rowling </author>
+<year>2005</year>
+<price>29.99</price>
+</book>
+
+<!-- Ein Klassiker -->
+<book category="children">
+<title lang="en"> Harry Potter </title>
+<author> J K. Rowling </author>
+<year>2005</year>
+<price>29.99</price>
+</book>
+
+</bookstore>

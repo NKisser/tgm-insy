@@ -1,0 +1,32 @@
+[
+    {
+        "amount": 100,
+        "price": 3899,
+        "description": "Lord of the Rings Trilogy",
+        "id": 1
+    },
+    {
+        "amount": 2,
+        "price": 10000,
+        "description": "The Art of Computer Programming Vol. 1",
+        "id": 2
+    },
+    {
+        "amount": 20,
+        "price": 3000,
+        "description": "Concrete Mathematics",
+        "id": 3
+    },
+    {
+        "amount": 20,
+        "price": 4167,
+        "description": "Code Complete: A Practical Handbook of Software Construction",
+        "id": 4
+    },
+    {
+        "amount": 10,
+        "price": 4995,
+        "description": "Datenbanksysteme. Eine Einführung",
+        "id": 5
+    }
+]

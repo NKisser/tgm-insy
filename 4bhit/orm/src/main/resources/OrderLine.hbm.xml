@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "https://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="model.OrderLine" table="order_lines">
+        <id name="id" type="int" column="id">
+            <generator class="increment" />
+        </id>
+
+        <many-to-one name="article" column="article_id" class="model.Article" cascade="all" />
+        <many-to-one name="order" column="order_id" class="model.Order" cascade="all" />
+        <property name="amount" column="amount" type="long" />
+    </class>
+</hibernate-mapping>
