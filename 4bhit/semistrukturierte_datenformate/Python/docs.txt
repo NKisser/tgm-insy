@@ -1,0 +1,37 @@
+"""
+Parse the XML file and print every book with title, author, author, year and price.
+Use proper identation for every book.
+
+Every book has its own category (cooking, fiction, non-fiction, etc.) as an attribute. This method
+groups books by category and prints them in the following format:
+
+Every book consists of the following child elements:
+category:
+    title
+        title: <title>
+        author: <author>
+        year: <year>
+        price: <price>
+
+For example:
+    <book category="cooking">
+    <title lang="en"> Everyday Italian </title>
+    <author> Giada De Laurentiis </author>
+    <year>2005</year>
+    <price>30.00</price>
+    </book>
+
+Example output:
+    technology:
+        The Art of Computer Programming
+            title : The Art of Computer Programming
+            author : Donald Knuth
+            year : 1968
+            price : 250.00
+        
+        The C Programming Language
+            title : The C Programming Language
+            author : Brian Kernighan, Dennis Ritchie
+            year : 1978
+            price : 100.00
+"""
