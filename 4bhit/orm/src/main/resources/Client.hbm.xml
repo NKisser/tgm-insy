@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "https://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="model.Client" table="clients">
+        <id name="id" type="int" column="id">
+            <generator class="native" />
+        </id>
+
+        <property name="name" column="name" type="string" />
+        <property name="address" column="address" type="string" />
+        <property name="city" column="city" type="string" />
+        <property name="country" column="country" type="string" />
+        
+        <set name="orders" table="orders" fetch="select">
+            <key>
+                <column name="id" not-null="true" />
+            </key>
+            <one-to-many class="model.Order" />
+        </set>
+    </class>
+</hibernate-mapping>

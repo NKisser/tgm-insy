@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+}
+
+group = 'asuender'
+version = '0.1'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.json:json:20220924'
+    implementation 'org.postgresql:postgresql:42.5.0'
+    implementation 'org.hibernate:hibernate-core:6.1.5.Final'
+}
+
+test {
+    useJUnitPlatform()
+}
