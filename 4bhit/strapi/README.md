@@ -1,57 +1,87 @@
-# 🚀 Getting started with Strapi
+# INSY EK-Modul "Headless CMS - Strapi"
 
-Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html) (CLI) which lets you scaffold and manage your project in seconds.
+Andreas Sünder 4BHIT - 13.06.2023
 
-### `develop`
+## Einführung
 
-Start your Strapi application with autoReload enabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-develop)
+Strapi ist es sogenanntes "Headless"-CMS. Das bedeutet, dass es nur die Daten bereitstellt, die dann von einer anderen Anwendung (z.B. einer Website, einer App etc.) abgerufen werden können - es verwaltet daher nur den Content, der im Hintergrund liegt. Am besten lässt sich dies anhand einer Grafik erklären:
 
-```
-npm run develop
-# or
-yarn develop
-```
+![cms](./img/cms.png)
 
-### `start`
+Klassische CMS wie Wordpress oder Joomla sind "monolithisch", d.h., sie verwalten sowohl die Daten als auch die Präsentation (also das Frontend). Bei einem Headless-CMS wie Strapi (wobei das "Head" für das Frontend steht) wird das Frontend von einer anderen Anwendung übernommen, die dann die Daten etwa über eine API abruft.
 
-Start your Strapi application with autoReload disabled. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-start)
+## Aufsetzen von Strapi
 
-```
-npm run start
-# or
-yarn start
+Nachdem Strapi auf NodeJS basiert, lässt Strapi über `npm` in einem eigenen "Project" (welches einen einfachen Ordner darstellt) installiert:
+
+```bash
+npx create-strapi-app@latest insy-4bhit-strapi
 ```
 
-### `build`
+![install1](./img/install1.png)
 
-Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
+![install2](./img/install2.png)
 
+Nach dem ersten Einrichten und fertigen Installieren von Strapi lässt sich das Admin-Panel über `http://localhost:1337/admin` aufrufen:
+
+![setup](./img/setup.png)
+
+Strapi verwendet das Konzept eines Super-Admins und mehrerer ("Unter-")Admins. Der Super-Admin ist der erste Benutzer, der sich registriert und kann daraufhin weitere Benutzer (die selbst auch Admins sein können) erstellen.
+
+Ist alles eingerichtet, wird man vom Dashboard begrüßt:
+
+![welcome](./img/welcome.png)
+
+## Erstellen einer Collection
+
+Für diese Aufgabe wurde eine Collection mit dem Namen `Restaurant` erstellt, um dort einzelne Restaurants o. Ä. speichern zu können. Dort lassen sich auch benutzerdefinierte Felder erstellen, die dann in der Datenbank gespeichert werden:
+
+![collection1](./img/collection1.png)
+
+![collection2](./img/collection2.png)
+
+## Benutzer und Rollen
+
+Für Strapi gibt es ein Plugin namens `Roles & Permissions`, welches standardmäßig aktiviert ist und es ermöglicht, über die `Settings`-Seite Rollen und Benutzer hinzuzufügen. Für die einzelnen Rollen lässt sich auch einstellen, welche Collections diese Rollen bearbeiten dürfen:
+
+![roles1](./img/roles1.png)
+
+## `Restaurant`-Collection publik setzen
+
+Standardmäßig sind alle neu erstellen Collections `private`, sprich, sie können von außen ohne Anmeldung nicht angesehen bzw. bearbeitet werden. Dies kann man ebenfalls in den Rollen einstellen:
+
+![roles2](./img/roles2.png)
+
+## Aufrufen der Daten über die API
+
+Für jede Collection wird ein eigener Endpoint zur Verfügung gestellt (z.B. über `/api/:pluralApiId`). Bei der Collection `Restaurant` ist das `/api/restaurants`. Die Daten werden dann als JSON zurückgegeben:
+
+```json
+{
+   "data":[
+      {
+         "id":1,
+         "attributes":{
+            "name": "Kent Restaurant",
+            "description": "Ein luxuriöses türkisches Restaurant direkt neben dem TGM!",
+            "createdAt": "2023-06-13T18:33:41.518Z",
+            "updatedAt": "2023-06-13T18:38:19.196Z",
+            "publishedAt": "2023-06-13T18:38:19.193Z",
+            "locale": "de"
+         }
+      },
+      {
+         "id":2,
+         "attributes":{
+            "name": "Kurze Pause",
+            "description": "Ein kleiner Kebap-Stand direkt am Friedrich-Engels-Platz!",
+            "createdAt": "2023-06-13T18:40:41.073Z",
+            "updatedAt": "2023-06-13T18:40:41.929Z",
+            "publishedAt": "2023-06-13T18:40:41.926Z",
+            "locale": "de"
+         }
+      }
+   ],
+   "meta": { ... }
+}
 ```
-npm run build
-# or
-yarn build
-```
-
-## ⚙️ Deployment
-
-Strapi gives you many possible deployment options for your project. Find the one that suits you on the [deployment section of the documentation](https://docs.strapi.io/developer-docs/latest/setup-deployment-guides/deployment.html).
-
-## 📚 Learn more
-
-- [Resource center](https://strapi.io/resource-center) - Strapi resource center.
-- [Strapi documentation](https://docs.strapi.io) - Official Strapi documentation.
-- [Strapi tutorials](https://strapi.io/tutorials) - List of tutorials made by the core team and the community.
-- [Strapi blog](https://docs.strapi.io) - Official Strapi blog containing articles made by the Strapi team and the community.
-- [Changelog](https://strapi.io/changelog) - Find out about the Strapi product updates, new features and general improvements.
-
-Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/strapi). Your feedback and contributions are welcome!
-
-## ✨ Community
-
-- [Discord](https://discord.strapi.io) - Come chat with the Strapi community including the core team.
-- [Forum](https://forum.strapi.io/) - Place to discuss, ask questions and find answers, show your Strapi project and get feedback or just talk with other Community members.
-- [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
-
----
-
-<sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
