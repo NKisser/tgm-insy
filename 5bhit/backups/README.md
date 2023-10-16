@@ -4,15 +4,15 @@ Andreas Sünder 5BHIT - 16.10.2023
 
 ## Backupstrategien
 
-## Inkrimentelles Backup
+### Inkrimentelles Backup
 
 Ein **inkrementelles Backup** speichert immer die Änderung zum vorherigen Backup. Zu Beginn wird ein Vollbackup durchgeführt, anschließend werden nur mehr die Änderungen gespeichert. Um ein inkrementelles Backup wiederherzustellen, müssen *alle* Backups vorhanden sein. Jedoch stellt es ein einfaches Verfahren da, welches wenig Speicherplatz benötigt.
 
-## Differentielles Backup
+### Differentielles Backup
 
 Ein **differentielles Backup** ist dem inkrementellen sehr ähnlich, jedoch speichert es nicht die Änderungen gegenüber dem vorherigen Backup, sondern gegenüber dem zu Beginn durchgeführten Vollbackup. Um ein differentielles Backup wiederherzustellen, wird nur das Vollbackup und das gewünschte differentielle Backup benötigt. Es ist somit einfacher wiederherzustellen als ein inkrementelles Backup, jedoch benötigt es mehr Speicherplatz, da alle Änderungen bei jedem Backup gespeichert werden.
 
-## Vollbackup
+### Vollbackup
 
 Beim **Vollbackup** werden alle vorhandenen Daten gesichert. Ein vergangener Stand kann somit immer als Ganzes wiederhergestellt werden (es wird somit kein vergangener Stand benötigt). Im Vergleich zu den anderen Strategien ist der Speicherbedarf hier sehr hoch.
 
