@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres
+    container_name: insy-5bhit-postgres
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - "pgdata:/var/lib/postgresql/data"
+      - "./my-postgres.conf:/etc/postgresql/postgresql.conf"
+    ports:
+      - 5432:5432
